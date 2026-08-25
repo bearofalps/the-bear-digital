@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>The Bear — What Survives the Restart</title>
+<meta content="Marko Kolman" name="author"/>
+<meta content="A literary systems memoir about continuity, correction, recovery, and the routes that still hold after interruption. Reader-review edition, 24 August 2026." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="css/reader.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip" href="#book">Skip to text</a>
+<header class="cover" id="cover">
+<img alt="Night rail yard in rain. Signal box occupied. Routes still lit." class="hero" src="img/cover-wide.jpg"/>
+<div class="cover-copy">
+<p class="kicker">Reader-review edition · 24 August 2026</p>
+<h1>The Bear</h1>
+<p class="subtitle">What Survives the Restart</p>
+<p class="byline">Marko Kolman</p>
+<p class="lede">A literary systems memoir about continuity, correction, recovery, and the routes that still hold after interruption.</p>
+<div class="actions">
+<a class="btn primary" href="#book">Enter the book</a>
+<a class="btn" href="#toc">Contents</a>
+<a class="btn" href="#colophon">Colophon</a>
+</div>
+</div>
+</header>
+<nav aria-label="Edition" class="bar">
+<a class="mark" href="#cover">The Bear</a>
+<a href="#toc">Contents</a>
+<a href="#epilogue">Epilogue</a>
+</nav>
+<main id="book"><section class="toc-wrap" id="toc">
+<h2>Contents</h2>
+<ol class="toc">
+<li><a href="#prologue"><span>The Fifteen-Month Project That Never Happened</span><span class="num">Prologue</span></a></li>
+<li class="part">Part I — The Human System</li>
+<li><a href="#ch-1"><span>No Keyboard Found</span><span class="num">1</span></a></li>
+<li><a href="#ch-2"><span>The Inputs</span><span class="num">2</span></a></li>
+<li><a href="#ch-3"><span>Level 1</span><span class="num">3</span></a></li>
+<li><a href="#ch-4"><span>Cars That Listen</span><span class="num">4</span></a></li>
+<li class="part">Part II — The Seed Forms</li>
+<li><a href="#ch-5"><span>The Signal</span><span class="num">5</span></a></li>
+<li><a href="#ch-6"><span>Please and Thank You</span><span class="num">6</span></a></li>
+<li><a href="#ch-7"><span>The Warehouse</span><span class="num">7</span></a></li>
+<li><a href="#ch-8"><span>When the Planet Boots</span><span class="num">8</span></a></li>
+<li class="part">Part III — The Map Corrects Itself</li>
+<li><a href="#ch-9"><span>The Light Bulb</span><span class="num">9</span></a></li>
+<li><a href="#ch-10"><span>Three Threads</span><span class="num">10</span></a></li>
+<li><a href="#ch-11"><span>The Map Is Not the Territory</span><span class="num">11</span></a></li>
+<li><a href="#ch-12"><span>The Substrate Holds—After the Hero Leaves</span><span class="num">12</span></a></li>
+<li><a href="#epilogue"><span>What Survives the Restart</span><span class="num">Epilogue</span></a></li>
+</ol>
+</section><div aria-live="polite" id="manuscript"></div><section class="colophon" id="colophon">
+<h2>Digital review copy</h2>
+<p>This file is a screen edition of the 24 August 2026 reader-review text. The prose is the frozen manuscript. The plates are not illustrations of events. They are the same visual grammar the book already uses: signal, routes, recovery, truth under pressure.</p>
+<dl class="meta-grid">
+<dt>Text</dt><dd>Reader-review edition, 24 August 2026. Not rewritten for this packet.</dd>
+<dt>Print twin</dt><dd>A5 interior in Literata, typeset with Typst. Separate press folio exists for shop handoff.</dd>
+<dt>This packet</dt><dd>HTML reader + still plates. Offline after first font load, or with system serifs if the network is gone.</dd>
+<dt>Status</dt><dd>Review copy. Not a shop-imposed press file. Not a claim of PDF/X.</dd>
+</dl>
+<p>Signal. Routes. Recovery. Truth under pressure.</p>
+</section></main><script>
+(() => {
+  const parts = [
+    "parts/00-prologue.html",
+    "parts/01-part-i.html",
+    "parts/02-ch-1.html",
+    "parts/03-ch-2.html",
+    "parts/04-ch-3.html",
+    "parts/05-ch-4.html",
+    "parts/06-part-ii.html",
+    "parts/07-ch-5.html",
+    "parts/08-ch-6.html",
+    "parts/09-ch-7.html",
+    "parts/10-ch-8.html",
+    "parts/11-part-iii.html",
+    "parts/12-ch-9.html",
+    "parts/13-ch-10.html",
+    "parts/14-ch-11.html",
+    "parts/15-ch-12.html",
+    "parts/16-epilogue.html"
+  ];
+  const target = document.getElementById("manuscript");
+  Promise.all(parts.map(path => fetch(path).then(r => { if (!r.ok) throw new Error(path); return r.text(); })))
+    .then(chunks => {
+      target.innerHTML = chunks.join("\n");
+      if (location.hash) requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
+    })
+    .catch(err => { target.innerHTML = `<article class="chapter"><p>Reader content failed to load: ${err.message}</p></article>`; });
+})();
+</script>
+<footer class="site">
+<span>The Bear · Marko Kolman</span>
+<span>Digital review · 25 August 2026</span>
+</footer>
+</body>
+</html>
