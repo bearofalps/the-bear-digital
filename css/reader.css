@@ -145,6 +145,29 @@ a:hover { color: #fff; }
 .bar a { color: var(--ink-dim); text-decoration: none; }
 .bar a:hover { color: var(--ink); }
 .bar .mark { color: var(--copper-soft); }
+.bar .bar-end { display: flex; align-items: center; gap: 0.9rem; margin-left: auto; }
+.bar button.listen {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--copper-soft);
+  background: transparent;
+  border: 1px solid rgba(224, 176, 106, 0.35);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  cursor: pointer;
+}
+.bar button.listen[aria-pressed="true"] {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #1a1208;
+}
+.bar button.listen:hover { color: #fff; border-color: #fff; }
+.bar button.listen[aria-pressed="true"]:hover { color: #1a1208; background: #e0b06a; }
+p.is-reading, h2.is-reading, .ch-num.is-reading {
+  background: linear-gradient(90deg, rgba(197,138,58,0.16), transparent 88%);
+  box-decoration-break: clone;
+}
 
 .toc-wrap, .colophon, .plate-block, article.chapter, .part-break {
   width: min(var(--measure), calc(100% - 2.4rem));
