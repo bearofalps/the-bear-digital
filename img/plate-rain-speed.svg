@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#07090e"/>
+  <g stroke="#5ec8de" stroke-opacity=".12" stroke-width="1.5">
+    <path d="M40 0 L200 900"/><path d="M280 0 L440 900"/><path d="M520 0 L680 900"/>
+    <path d="M760 0 L920 900"/><path d="M1000 0 L1160 900"/><path d="M1240 0 L1400 900"/>
+    <path d="M1480 0 L1640 900"/>
+  </g>
+  <path d="M0 620 H1600" stroke="#9aa3ad" stroke-opacity=".2" stroke-width="3"/>
+  <path d="M1180 620 V280" stroke="#c58a3a" stroke-opacity=".7" stroke-width="3"/>
+  <circle cx="1180" cy="260" r="14" fill="#c58a3a"/>
+</svg>

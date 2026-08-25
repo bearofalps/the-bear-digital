@@ -1,5 +1,7 @@
-# The Bear — screen twin
+# The Bear — digital reader
 
 Live: https://bearbook.alpskimedved.xyz
 
-`index.html` is the book. Plates sit in `img/`. Print twin remains the A5 Typst folio.
+Screen edition of the 24 August 2026 frozen manuscript.
+Single-page reader. Plates use the same line grammar as the cover.
+Print twin is a separate A5 Typst folio.

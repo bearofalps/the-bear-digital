@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700">
+  <rect width="1600" height="700" fill="#07090e"/>
+  <path d="M200 120 H1400" stroke="#c58a3a" stroke-opacity=".35" stroke-width="1.5"/>
+  <text x="800" y="300" text-anchor="middle" fill="#e7e2d4" font-family="Georgia, serif" font-style="italic" font-size="36">Continuity was not the absence of interruption.</text>
+  <text x="800" y="360" text-anchor="middle" fill="#e0b06a" font-family="Georgia, serif" font-style="italic" font-size="32">It was the ability to find the route again.</text>
+  <path d="M200 520 H1400" stroke="#5ec8de" stroke-opacity=".25" stroke-width="1.5"/>
+</svg>
