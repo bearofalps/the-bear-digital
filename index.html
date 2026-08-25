@@ -67,29 +67,13 @@
 <p>Signal. Routes. Recovery. Truth under pressure.</p>
 </section></main><script>
 (() => {
-  const parts = [
-    "parts/00-prologue.html",
-    "parts/01-part-i.html",
-    "parts/02-ch-1.html",
-    "parts/03-ch-2.html",
-    "parts/04-ch-3.html",
-    "parts/05-ch-4.html",
-    "parts/06-part-ii.html",
-    "parts/07-ch-5.html",
-    "parts/08-ch-6.html",
-    "parts/09-ch-7.html",
-    "parts/10-ch-8.html",
-    "parts/11-part-iii.html",
-    "parts/12-ch-9.html",
-    "parts/13-ch-10.html",
-    "parts/14-ch-11.html",
-    "parts/15-ch-12.html",
-    "parts/16-epilogue.html"
-  ];
+  const parts = Array.from({length: 29}, (_, i) => `parts/chunk-${String(i).padStart(3, "0")}.html`);
   const target = document.getElementById("manuscript");
   Promise.all(parts.map(path => fetch(path).then(r => { if (!r.ok) throw new Error(path); return r.text(); })))
     .then(chunks => {
-      target.innerHTML = chunks.join("\n");
+      target.innerHTML = chunks.join("");
+      target.querySelector("#colophon")?.remove();
+      target.querySelector("footer.site")?.remove();
       if (location.hash) requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
     })
     .catch(err => { target.innerHTML = `<article class="chapter"><p>Reader content failed to load: ${err.message}</p></article>`; });
