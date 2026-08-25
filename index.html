@@ -41,6 +41,9 @@
 <a class="mark" href="#cover">The Bear</a>
 <a href="#toc">Contents</a>
 <a href="#epilogue">Epilogue</a>
+<div class="bar-end">
+<button type="button" class="listen" id="listen-toggle" aria-pressed="false" aria-label="Listen from this chapter">Listen</button>
+</div>
 </nav>
 <main id="book">
 <section class="toc-wrap" id="toc">
@@ -105,6 +108,7 @@
     .catch(err => { target.innerHTML = '<article class="chapter"><p>Reader content failed to load: ' + err.message + '</p></article>'; });
 })();
 </script>
+<script src="js/listen.js" defer></script>
 <footer class="site">
 <span>The Bear · Marko Kolman</span>
 <span>Digital review · 25 August 2026</span>
