@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2100" width="1600" height="2100">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c1520"/>
+      <stop offset="1" stop-color="#07090e"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="72%" cy="22%" r="40%">
+      <stop offset="0" stop-color="#5ec8de" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#5ec8de" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="copper" cx="28%" cy="78%" r="35%">
+      <stop offset="0" stop-color="#c58a3a" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#c58a3a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="2100" fill="url(#sky)"/>
+  <rect width="1600" height="2100" fill="url(#lamp)"/>
+  <rect width="1600" height="2100" fill="url(#copper)"/>
+  <g fill="none" stroke="#9aa3ad" stroke-opacity=".28" stroke-width="3">
+    <path d="M120 2100 L520 980 L1080 980 L1480 2100"/>
+    <path d="M200 2100 L560 1040 L1040 1040 L1400 2100"/>
+    <path d="M280 2100 L600 1100 L1000 1100 L1320 2100"/>
+  </g>
+  <g fill="none" stroke="#5ec8de" stroke-opacity=".55" stroke-width="2">
+    <path d="M640 980 L640 620"/>
+    <path d="M960 980 L960 620"/>
+  </g>
+  <circle cx="640" cy="600" r="10" fill="#d24a3a"/>
+  <circle cx="960" cy="600" r="10" fill="#5ec8de"/>
+  <rect x="760" y="700" width="80" height="120" rx="4" fill="#10141c" stroke="#c58a3a" stroke-opacity=".6"/>
+  <rect x="776" y="720" width="48" height="28" fill="#5ec8de" fill-opacity=".35"/>
+</svg>
