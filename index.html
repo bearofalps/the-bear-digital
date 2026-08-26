@@ -32,6 +32,7 @@
 <p class="lede">A literary systems memoir about continuity, correction, recovery, and the routes that still hold after interruption.</p>
 <div class="actions">
 <a class="btn primary" href="#book">Enter the book</a>
+<a class="btn continue" id="continue" hidden href="#book">Continue</a>
 <a class="btn" href="#toc">Contents</a>
 <a class="btn" href="#colophon">Colophon</a>
 </div>
@@ -41,6 +42,7 @@
 <a class="mark" href="#cover">The Bear</a>
 <a href="#toc">Contents</a>
 <a href="#epilogue">Epilogue</a>
+<a class="resume" id="resume" hidden href="#book">Continue</a>
 <div class="bar-end">
 <button type="button" class="listen" id="listen-toggle" aria-pressed="false" aria-label="Listen from this chapter">Listen</button>
 </div>
@@ -103,13 +105,17 @@
       });
       target.querySelector('#colophon')?.remove();
       target.querySelector('footer.site')?.remove();
-      if (location.hash) requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
+      document.dispatchEvent(new Event('bear-ready'));
+      if (location.hash && location.hash !== '#cover') {
+        requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
+      }
     })
     .catch(err => { target.innerHTML = '<article class="chapter"><p>Reader content failed to load: ' + err.message + '</p></article>'; });
 })();
 </script>
 <script src="js/listen.js" defer></script>
 <script src="js/stats.js" defer></script>
+<script src="js/place.js" defer></script>
 <footer class="site">
 <span>The Bear · Marko Kolman</span>
 <span class="read-stat"><span id="read-count" hidden>0</span></span>
