@@ -7,10 +7,23 @@
     return;
   }
 
+  const idleLabel = btn.dataset.idle || "Listen";
+  const busyLabel = btn.dataset.busy || "Stop";
+  const pageLang = (document.documentElement.lang || "en").toLowerCase();
+  const utterLang = pageLang.startsWith("fr") ? "fr-FR" : "en-GB";
+
   let queue = [];
   let index = 0;
   let active = false;
   let currentEl = null;
+
+  const pickVoice = () => {
+    const voices = synth.getVoices() || [];
+    const want = pageLang.startsWith("fr") ? "fr" : "en";
+    return voices.find(v => (v.lang || "").toLowerCase().startsWith(want) && /fr-fr|en-gb|en-us/i.test(v.lang))
+        || voices.find(v => (v.lang || "").toLowerCase().startsWith(want))
+        || null;
+  };
 
   const chapterInView = () => {
     const chapters = [...document.querySelectorAll("article.chapter")];
@@ -51,7 +64,7 @@
   const setIdle = () => {
     active = false;
     btn.setAttribute("aria-pressed", "false");
-    btn.textContent = "Listen";
+    btn.textContent = idleLabel;
     clearMark();
   };
 
@@ -78,6 +91,9 @@
       currentEl.scrollIntoView({ block: "center", behavior: "smooth" });
     }
     const utter = new SpeechSynthesisUtterance(unit.text);
+    utter.lang = utterLang;
+    const voice = pickVoice();
+    if (voice) utter.voice = voice;
     utter.rate = 0.96;
     utter.pitch = 1;
     utter.onend = () => {
@@ -111,7 +127,7 @@
     }
     active = true;
     btn.setAttribute("aria-pressed", "true");
-    btn.textContent = "Stop";
+    btn.textContent = busyLabel;
     speakNext();
   };
 

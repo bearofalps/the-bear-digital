@@ -1,5 +1,6 @@
 (() => {
-  const KEY = "bear-route";
+  const KEY = document.documentElement.dataset.route || "bear-route";
+  const FR = document.documentElement.lang === "fr";
   const btn = document.getElementById("continue");
   const barResume = document.getElementById("resume");
 
@@ -17,7 +18,7 @@
     const num = (ch.querySelector(".ch-num")?.innerText || "").replace(/\s+/g, " ").trim();
     const title = (ch.querySelector("h2")?.innerText || "").replace(/\s+/g, " ").trim();
     if (num && title) return `${num} — ${title}`;
-    return title || num || "where you left";
+    return title || num || (FR ? "là où vous vous êtes arrêté" : "where you left");
   };
 
   const nearestChapter = () => {
@@ -46,7 +47,7 @@
   const paintButtons = () => {
     const place = read();
     if (!place?.id) return;
-    const text = "Continue · " + place.label;
+    const text = (FR ? "Reprendre · " : "Continue · ") + place.label;
     if (btn) {
       btn.hidden = false;
       btn.textContent = text;
@@ -54,7 +55,7 @@
     }
     if (barResume) {
       barResume.hidden = false;
-      barResume.textContent = "Continue";
+      barResume.textContent = FR ? "Reprendre" : "Continue";
       barResume.href = "#" + place.id;
       barResume.title = place.label;
     }
