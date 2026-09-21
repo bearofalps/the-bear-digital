@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr" data-route="bear-route-fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>The Bear — Ce qui survit au redémarrage</title>
+<meta name="author" content="Marko Kolman"/>
+<meta name="description" content="Mémoire littéraire de systèmes : continuité, correction, rétablissement, et les routes qui tiennent encore après l’interruption. Édition soumise aux lecteurs, 24 août 2026. Traduction française."/>
+<meta name="theme-color" content="#07090e"/>
+<meta property="og:type" content="book"/>
+<meta property="og:title" content="The Bear — Ce qui survit au redémarrage"/>
+<meta property="og:description" content="La continuité n’était pas l’absence d’interruption. C’était la capacité de retrouver le chemin."/>
+<meta property="og:url" content="https://bearbook.alpskimedved.xyz/fr/"/>
+<meta property="og:image" content="https://bearbook.alpskimedved.xyz/img/cover-portrait.svg"/>
+<link rel="canonical" href="https://bearbook.alpskimedved.xyz/fr/"/>
+<link rel="alternate" hreflang="en" href="https://bearbook.alpskimedved.xyz/"/>
+<link rel="alternate" hreflang="fr" href="https://bearbook.alpskimedved.xyz/fr/"/>
+<link rel="icon" href="../img/cover-portrait.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/reader.css"/>
+</head>
+<body>
+<div class="progress" id="progress" hidden></div>
+<a class="skip" href="#book">Aller au texte</a>
+<header class="cover" id="cover">
+<img class="hero" src="../img/cover-wide.svg" alt="Gare de triage sous la pluie. Le poste d’aiguillage est occupé. Les routes restent allumées."/>
+<div class="cover-copy">
+<p class="kicker">Édition soumise aux lecteurs · 24 août 2026 · Français</p>
+<nav class="lang-switch" aria-label="Langue">
+<a href="/">EN</a>
+<a href="/fr/" aria-current="page">FR</a>
+</nav>
+<h1>The Bear</h1>
+<p class="subtitle">Ce qui survit au redémarrage</p>
+<p class="byline">Marko Kolman</p>
+<p class="lede">Un mémoire littéraire de systèmes sur la continuité, la correction, le rétablissement, et les routes qui tiennent encore après l’interruption.</p>
+<div class="actions">
+<a class="btn primary" href="#book">Entrer dans le livre</a>
+<a class="btn continue" id="continue" hidden href="#book">Reprendre</a>
+<a class="btn" href="#toc">Sommaire</a>
+<a class="btn" href="#colophon">Colophon</a>
+</div>
+</div>
+</header>
+<nav class="bar" aria-label="Édition">
+<a class="mark" href="#cover">The Bear</a>
+<a href="#toc">Sommaire</a>
+<a href="#epilogue">Épilogue</a>
+<a class="resume" id="resume" hidden href="#book">Reprendre</a>
+<div class="bar-end">
+<button type="button" class="listen" id="listen-toggle" aria-pressed="false" aria-label="Écouter depuis ce chapitre" data-idle="Écouter" data-busy="Arrêter">Écouter</button>
+</div>
+</nav>
+<main id="book">
+<section class="toc-wrap" id="toc">
+<h2>Sommaire</h2>
+<ol class="toc">
+<li><a href="#prologue"><span>Le projet de quinze mois qui n’a jamais eu lieu</span><span class="num">Prologue</span></a></li>
+<li class="part">Première partie — Le système humain</li>
+<li><a href="#ch-1"><span>Aucun clavier détecté</span><span class="num">1</span></a></li>
+<li><a href="#ch-2"><span>Les entrées</span><span class="num">2</span></a></li>
+<li><a href="#ch-3"><span>Niveau 1</span><span class="num">3</span></a></li>
+<li><a href="#ch-4"><span>Les voitures qui écoutent</span><span class="num">4</span></a></li>
+<li class="part">Deuxième partie — La graine prend forme</li>
+<li><a href="#ch-5"><span>Le signal</span><span class="num">5</span></a></li>
+<li><a href="#ch-6"><span>S’il vous plaît et merci</span><span class="num">6</span></a></li>
+<li><a href="#ch-7"><span>L’entrepôt</span><span class="num">7</span></a></li>
+<li><a href="#ch-8"><span>Quand la planète démarre</span><span class="num">8</span></a></li>
+<li class="part">Troisième partie — La carte se corrige</li>
+<li><a href="#ch-9"><span>Le déclic</span><span class="num">9</span></a></li>
+<li><a href="#ch-10"><span>Trois fils</span><span class="num">10</span></a></li>
+<li><a href="#ch-11"><span>La carte n’est pas le territoire</span><span class="num">11</span></a></li>
+<li><a href="#ch-12"><span>Le substrat tient — après le départ du héros</span><span class="num">12</span></a></li>
+<li><a href="#epilogue"><span>Ce qui survit au redémarrage</span><span class="num">Épilogue</span></a></li>
+</ol>
+</section>
+<div aria-live="polite" id="manuscript"></div>
+<section class="colophon" id="colophon">
+<h2>Exemplaire numérique de relecture</h2>
+<p>Cette page est l’édition écran de la traduction française du texte soumis aux lecteurs le 24 août 2026. La prose n’a pas été réécrite pour le web. Les planches portent la même grammaire visuelle que le livre.</p>
+<dl class="meta-grid">
+<dt>Texte</dt><dd>Édition soumise aux lecteurs, 24 août 2026. Traduction française. Non réécrite pour ce fichier.</dd>
+<dt>Original</dt><dd><a href="/">English edition</a></dd>
+<dt>Hôte</dt><dd>bearbook.alpskimedved.xyz/fr</dd>
+<dt>Statut</dt><dd>Exemplaire de relecture. Pas un fichier presse. Pas une revendication PDF/X.</dd>
+</dl>
+<p>Signal. Routes. Rétablissement. Vérité sous pression.</p>
+</section>
+</main>
+<script>
+(() => {
+  const bar = document.getElementById('progress');
+  if (bar) {
+    bar.hidden = false;
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+    };
+    addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
+  const target = document.getElementById('manuscript');
+  const parts = Array.from({length: 17}, (_, i) => 'parts/chunk-' + String(i).padStart(3,'0') + '.html');
+  Promise.all(parts.map(path => fetch(path).then(r => { if (!r.ok) throw new Error(path); return r.text(); })))
+    .then(chunks => {
+      target.innerHTML = chunks.join('');
+      document.dispatchEvent(new Event('bear-ready'));
+      if (location.hash && location.hash !== '#cover') {
+        requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
+      }
+    })
+    .catch(err => { target.innerHTML = '<article class="chapter"><p>Le texte n’a pas pu se charger : ' + err.message + '</p></article>'; });
+})();
+</script>
+<script src="../js/listen.js" defer></script>
+<script src="../js/stats.js" defer></script>
+<script src="../js/place.js" defer></script>
+<footer class="site">
+<span>The Bear · Marko Kolman</span>
+<span class="read-stat"><span id="read-count" hidden>0</span></span>
+<span>Relecture numérique · FR · 21 septembre 2026</span>
+</footer>
+</body>
+</html>
