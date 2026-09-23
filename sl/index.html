@@ -4,7 +4,6 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>The Bear — Kaj preživi ponovni zagon</title>
-<meta name="author" content="Marko Kolman"/>
 <meta name="theme-color" content="#07090e"/>
 <link rel="canonical" href="https://bearbook.alpskimedved.xyz/sl/"/>
 <link rel="alternate" hreflang="en" href="https://bearbook.alpskimedved.xyz/"/>
@@ -76,12 +75,42 @@
 <script>
 (() => {
   const bar = document.getElementById('progress');
-  if (bar) { bar.hidden = false; const onScroll = () => { const max = document.documentElement.scrollHeight - innerHeight; bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%'; }; addEventListener('scroll', onScroll, {passive:true}); onScroll(); }
+  if (bar) {
+    bar.hidden = false;
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+    };
+    addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
   const target = document.getElementById('manuscript');
-  const parts = Array.from({length: 17}, (_, i) => 'parts/chunk-' + String(i).padStart(3,'0') + '.html');
-  Promise.all(parts.map(path => fetch(path).then(r => { if (!r.ok) throw new Error(path); return r.text(); })))
-    .then(chunks => { target.innerHTML = chunks.join(''); document.dispatchEvent(new Event('bear-ready')); })
-    .catch(err => { target.innerHTML = '<article class="chapter"><p>Besedila ni bilo mogoče naložiti: ' + err.message + '</p></article>'; });
+  const n = 17;
+  (async () => {
+    const bits = [];
+    let missing = 0;
+    for (let i = 0; i < n; i++) {
+      const path = 'parts/chunk-' + String(i).padStart(3,'0') + '.html';
+      try {
+        const r = await fetch(path);
+        if (r.ok) bits.push(await r.text());
+        else missing++;
+      } catch (e) { missing++; }
+    }
+    if (!bits.length) {
+      target.innerHTML = '<article class="chapter"><p>Besedilo še ni na poti.</p></article>';
+      return;
+    }
+    target.innerHTML = bits.join('');
+    if (missing) {
+      const note = document.createElement('p');
+      note.className = 'lede';
+      note.style.opacity = '.7';
+      note.textContent = 'Nekatera poglavja še prihajajo po zraku. Osveži stran čez minuto.';
+      target.appendChild(note);
+    }
+    document.dispatchEvent(new Event('bear-ready'));
+  })();
 })();
 </script>
 <script src="../js/theme.js" defer></script>
