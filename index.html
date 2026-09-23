@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-route="bear-route">
+<html lang="en" data-route="bear-route" data-theme="dark">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -14,12 +14,23 @@
 <meta property="og:image" content="https://bearbook.alpskimedved.xyz/img/cover-portrait.svg"/>
 <link rel="canonical" href="https://bearbook.alpskimedved.xyz/"/>
 <link rel="alternate" hreflang="en" href="https://bearbook.alpskimedved.xyz/"/>
+<link rel="alternate" hreflang="de" href="https://bearbook.alpskimedved.xyz/de/"/>
+<link rel="alternate" hreflang="sl" href="https://bearbook.alpskimedved.xyz/sl/"/>
 <link rel="alternate" hreflang="fr" href="https://bearbook.alpskimedved.xyz/fr/"/>
 <link rel="icon" href="img/cover-portrait.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/reader.css"/>
+<link rel="stylesheet" href="css/theme-light.css"/>
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem("bear-theme");
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <div class="progress" id="progress" hidden></div>
@@ -30,6 +41,8 @@
 <p class="kicker">Reader-review edition · 24 August 2026</p>
 <nav class="lang-switch" aria-label="Language">
 <a href="/" aria-current="page">EN</a>
+<a href="/de/">DE</a>
+<a href="/sl/">SL</a>
 <a href="/fr/">FR</a>
 </nav>
 <h1>The Bear</h1>
@@ -50,7 +63,8 @@
 <a href="#epilogue">Epilogue</a>
 <a class="resume" id="resume" hidden href="#book">Continue</a>
 <div class="bar-end">
-<button type="button" class="listen" id="listen-toggle" aria-pressed="false" aria-label="Listen from this chapter">Listen</button>
+<button type="button" class="theme" id="theme-toggle" aria-pressed="false">Paper</button>
+<button type="button" class="listen" id="listen-toggle" aria-pressed="false" aria-label="Listen from this chapter" data-idle="Listen" data-busy="Stop">Listen</button>
 </div>
 </nav>
 <main id="book">
@@ -82,7 +96,7 @@
 <p>This file is a screen edition of the 24 August 2026 reader-review text. The prose is the frozen manuscript. The plates are not illustrations of events. They are the same visual grammar the book already uses: signal, routes, recovery, truth under pressure.</p>
 <dl class="meta-grid">
 <dt>Text</dt><dd>Reader-review edition, 24 August 2026. Not rewritten for this packet.</dd>
-<dt>French</dt><dd><a href="/fr/">Édition française</a></dd>
+<dt>Languages</dt><dd>EN · DE · SL · FR — same house, interchangeable night and paper.</dd>
 <dt>Print twin</dt><dd>A5 interior in Literata, typeset with Typst. Separate press folio exists for shop handoff.</dd>
 <dt>Host</dt><dd>bearbook.alpskimedved.xyz</dd>
 <dt>Status</dt><dd>Review copy. Not a shop-imposed press file. Not a claim of PDF/X.</dd>
@@ -102,8 +116,8 @@
     addEventListener('scroll', onScroll, {passive:true});
     onScroll();
   }
-  const parts = Array.from({length: 29}, (_, i) => 'parts/chunk-' + String(i).padStart(3,'0') + '.html');
   const target = document.getElementById('manuscript');
+  const parts = Array.from({length: 29}, (_, i) => 'parts/chunk-' + String(i).padStart(3,'0') + '.html');
   Promise.all(parts.map(path => fetch(path).then(r => { if (!r.ok) throw new Error(path); return r.text(); })))
     .then(chunks => {
       target.innerHTML = chunks.join('');
@@ -120,13 +134,14 @@
     .catch(err => { target.innerHTML = '<article class="chapter"><p>Reader content failed to load: ' + err.message + '</p></article>'; });
 })();
 </script>
+<script src="js/theme.js" defer></script>
 <script src="js/listen.js" defer></script>
 <script src="js/stats.js" defer></script>
 <script src="js/place.js" defer></script>
 <footer class="site">
 <span>The Bear · Marko Kolman</span>
 <span class="read-stat"><span id="read-count" hidden>0</span></span>
-<span>Digital review · 25 August 2026</span>
+<span>Digital review · 23 September 2026</span>
 </footer>
 </body>
 </html>
