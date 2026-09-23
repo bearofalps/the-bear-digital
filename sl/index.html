@@ -5,38 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>The Bear — Kaj preživi ponovni zagon</title>
 <meta name="author" content="Marko Kolman"/>
-<meta name="description" content="Literarni sistemski spomin o kontinuiteti, popravku, okrevanju in poteh, ki zdržijo po prekinitvi. Izdaja za bralski pregled, 24. avgust 2026. Slovenski prevod."/>
 <meta name="theme-color" content="#07090e"/>
-<meta property="og:type" content="book"/>
-<meta property="og:title" content="The Bear — Kaj preživi ponovni zagon"/>
-<meta property="og:description" content="Kontinuiteta ni bila odsotnost prekinitve. Bila je zmožnost, da spet najdeš pot."/>
-<meta property="og:url" content="https://bearbook.alpskimedved.xyz/sl/"/>
-<meta property="og:image" content="https://bearbook.alpskimedved.xyz/img/cover-portrait.svg"/>
 <link rel="canonical" href="https://bearbook.alpskimedved.xyz/sl/"/>
 <link rel="alternate" hreflang="en" href="https://bearbook.alpskimedved.xyz/"/>
 <link rel="alternate" hreflang="de" href="https://bearbook.alpskimedved.xyz/de/"/>
 <link rel="alternate" hreflang="sl" href="https://bearbook.alpskimedved.xyz/sl/"/>
 <link rel="alternate" hreflang="fr" href="https://bearbook.alpskimedved.xyz/fr/"/>
 <link rel="icon" href="../img/cover-portrait.svg"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/reader.css"/>
 <link rel="stylesheet" href="../css/theme-light.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet"/>
 <script>(function(){try{var t=localStorage.getItem("bear-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}})();</script>
 </head>
 <body>
 <div class="progress" id="progress" hidden></div>
 <a class="skip" href="#book">Na besedilo</a>
 <header class="cover" id="cover">
-<img class="hero" src="../img/cover-wide.svg" alt="Nočni ranžirni stolp v dežju. Signalna hiša zasedena. Poti še svetijo."/>
+<img class="hero" src="../img/cover-wide.svg" alt="Nočni ranžirni stolp v dežju."/>
 <div class="cover-copy">
 <p class="kicker">Izdaja za bralski pregled · 24. avgust 2026 · slovenščina</p>
 <nav class="lang-switch" aria-label="Jezik">
-<a href="/">EN</a>
-<a href="/de/">DE</a>
-<a href="/sl/" aria-current="page">SL</a>
-<a href="/fr/">FR</a>
+<a href="/">EN</a><a href="/de/">DE</a><a href="/sl/" aria-current="page">SL</a><a href="/fr/">FR</a>
 </nav>
 <h1>The Bear</h1>
 <p class="subtitle">Kaj preživi ponovni zagon</p>
@@ -46,7 +35,6 @@
 <a class="btn primary" href="#book">V knjigo</a>
 <a class="btn continue" id="continue" hidden href="#book">Nadaljuj</a>
 <a class="btn" href="#toc">Kazalo</a>
-<a class="btn" href="#colophon">Kolofon</a>
 </div>
 </div>
 </header>
@@ -56,8 +44,8 @@
 <a href="#epilogue">Epilog</a>
 <a class="resume" id="resume" hidden href="#book">Nadaljuj</a>
 <div class="bar-end">
-<button type="button" class="theme" id="theme-toggle" aria-pressed="false">Papir</button>
-<button type="button" class="listen" id="listen-toggle" aria-pressed="false" aria-label="Poslušaj od tega poglavja" data-idle="Poslušaj" data-busy="Ustavi">Poslušaj</button>
+<button type="button" class="theme" id="theme-toggle">Papir</button>
+<button type="button" class="listen" id="listen-toggle" data-idle="Poslušaj" data-busy="Ustavi">Poslušaj</button>
 </div>
 </nav>
 <main id="book">
@@ -84,40 +72,15 @@
 </ol>
 </section>
 <div aria-live="polite" id="manuscript"></div>
-<section class="colophon" id="colophon">
-<h2>Digitalni izvod za branje</h2>
-<p>Ta stran je zaslonska izdaja slovenskega prevoda besedila z 24. avgusta 2026. Proza za splet ni bila prepisana.</p>
-<dl class="meta-grid">
-<dt>Besedilo</dt><dd>Izdaja za bralski pregled, 24. avgust 2026. Slovenski prevod. Ni prepisano.</dd>
-<dt>Jeziki</dt><dd>EN · DE · SL · FR</dd>
-<dt>Gostitelj</dt><dd>bearbook.alpskimedved.xyz/sl</dd>
-<dt>Status</dt><dd>Pregledni izvod. Ni tiskarske datoteke. Ni zahtevka PDF/X.</dd>
-</dl>
-<p>Signal. Poti. Okrevanje. Resnica pod pritiskom.</p>
-</section>
 </main>
 <script>
 (() => {
   const bar = document.getElementById('progress');
-  if (bar) {
-    bar.hidden = false;
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - innerHeight;
-      bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
-    };
-    addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-  }
+  if (bar) { bar.hidden = false; const onScroll = () => { const max = document.documentElement.scrollHeight - innerHeight; bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%'; }; addEventListener('scroll', onScroll, {passive:true}); onScroll(); }
   const target = document.getElementById('manuscript');
-  const parts = ['parts/book-a.html','parts/book-b.html','parts/book-c.html'];
+  const parts = Array.from({length: 17}, (_, i) => 'parts/chunk-' + String(i).padStart(3,'0') + '.html');
   Promise.all(parts.map(path => fetch(path).then(r => { if (!r.ok) throw new Error(path); return r.text(); })))
-    .then(chunks => {
-      target.innerHTML = chunks.join('');
-      document.dispatchEvent(new Event('bear-ready'));
-      if (location.hash && location.hash !== '#cover') {
-        requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
-      }
-    })
+    .then(chunks => { target.innerHTML = chunks.join(''); document.dispatchEvent(new Event('bear-ready')); })
     .catch(err => { target.innerHTML = '<article class="chapter"><p>Besedila ni bilo mogoče naložiti: ' + err.message + '</p></article>'; });
 })();
 </script>
@@ -125,10 +88,6 @@
 <script src="../js/listen.js" defer></script>
 <script src="../js/stats.js" defer></script>
 <script src="../js/place.js" defer></script>
-<footer class="site">
-<span>The Bear · Marko Kolman</span>
-<span class="read-stat"><span id="read-count" hidden>0</span></span>
-<span>Digitalni pregled · SL · 23. september 2026</span>
-</footer>
+<footer class="site"><span>The Bear · Marko Kolman</span><span>SL · 23. september 2026</span></footer>
 </body>
 </html>
