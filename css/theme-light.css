@@ -1,0 +1,63 @@
+html[data-theme="light"] {
+  --bg: #f4f1ea;
+  --bg-elev: #fffdf8;
+  --ink: #1c1a16;
+  --ink-dim: #6a655c;
+  --rule: rgba(28, 26, 22, 0.12);
+  --copper: #9a6420;
+  --copper-soft: #8a5a1c;
+  --cyan: #2f6f7c;
+}
+html[data-theme="light"] body { background: var(--bg); color: var(--ink); }
+html[data-theme="light"] a:hover { color: #111; }
+html[data-theme="light"] .cover {
+  color: #1c1a16;
+  background:
+    radial-gradient(1200px 600px at 70% 20%, rgba(47,111,124,0.08), transparent 55%),
+    radial-gradient(900px 500px at 20% 80%, rgba(154,100,32,0.10), transparent 50%),
+    linear-gradient(180deg, #efe8db 0%, #f4f1ea 100%);
+}
+html[data-theme="light"] .cover img.hero {
+  filter: brightness(1.18) saturate(0.55) contrast(0.92);
+  opacity: 0.38;
+}
+html[data-theme="light"] .cover::after {
+  background: linear-gradient(180deg, rgba(244,241,234,0.15) 0%, rgba(244,241,234,0.55) 46%, rgba(244,241,234,0.96) 100%);
+}
+html[data-theme="light"] .cover .subtitle { color: #3a372f; }
+html[data-theme="light"] .cover p.lede { color: #4a463d; }
+html[data-theme="light"] .btn {
+  border-color: rgba(28,26,22,0.22);
+  color: var(--ink);
+}
+html[data-theme="light"] .btn.primary { color: #fff8ee; }
+html[data-theme="light"] .btn:hover { background: #1c1a16; color: #f4f1ea; border-color: #1c1a16; }
+html[data-theme="light"] .bar {
+  background: rgba(244,241,234,0.90);
+}
+html[data-theme="light"] .bar button.listen[aria-pressed="true"] { color: #fff8ee; }
+html[data-theme="light"] .bar button.listen:hover,
+html[data-theme="light"] .lang-switch a:hover { color: #111; }
+html[data-theme="light"] .plate-block img {
+  box-shadow: 0 18px 40px rgba(28,26,22,0.12);
+}
+html[data-theme="light"] footer.site .read-stat { color: #8a8478; }
+
+.bar button.theme {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--copper-soft);
+  background: transparent;
+  border: 1px solid rgba(197, 138, 58, 0.35);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  cursor: pointer;
+}
+.bar button.theme[aria-pressed="true"] {
+  background: transparent;
+  border-color: rgba(28, 26, 22, 0.28);
+}
+.bar button.theme:hover { color: inherit; border-color: currentColor; }
+
+.lang-switch a { white-space: nowrap; }
