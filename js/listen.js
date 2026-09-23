@@ -10,7 +10,14 @@
   const idleLabel = btn.dataset.idle || "Listen";
   const busyLabel = btn.dataset.busy || "Stop";
   const pageLang = (document.documentElement.lang || "en").toLowerCase();
-  const utterLang = pageLang.startsWith("fr") ? "fr-FR" : "en-GB";
+
+  const LANG_MAP = {
+    en: { utter: "en-GB", prefixes: ["en-gb", "en-us", "en"] },
+    fr: { utter: "fr-FR", prefixes: ["fr-fr", "fr"] },
+    de: { utter: "de-AT", prefixes: ["de-at", "de-de", "de"] },
+    sl: { utter: "sl-SI", prefixes: ["sl-si", "sl"] }
+  };
+  const spec = LANG_MAP[pageLang.slice(0, 2)] || LANG_MAP.en;
 
   let queue = [];
   let index = 0;
@@ -19,10 +26,11 @@
 
   const pickVoice = () => {
     const voices = synth.getVoices() || [];
-    const want = pageLang.startsWith("fr") ? "fr" : "en";
-    return voices.find(v => (v.lang || "").toLowerCase().startsWith(want) && /fr-fr|en-gb|en-us/i.test(v.lang))
-        || voices.find(v => (v.lang || "").toLowerCase().startsWith(want))
-        || null;
+    for (const prefix of spec.prefixes) {
+      const hit = voices.find(v => (v.lang || "").toLowerCase().startsWith(prefix));
+      if (hit) return hit;
+    }
+    return null;
   };
 
   const chapterInView = () => {
@@ -91,9 +99,12 @@
       currentEl.scrollIntoView({ block: "center", behavior: "smooth" });
     }
     const utter = new SpeechSynthesisUtterance(unit.text);
-    utter.lang = utterLang;
+    utter.lang = spec.utter;
     const voice = pickVoice();
-    if (voice) utter.voice = voice;
+    if (voice) {
+      utter.voice = voice;
+      utter.lang = voice.lang || spec.utter;
+    }
     utter.rate = 0.96;
     utter.pitch = 1;
     utter.onend = () => {

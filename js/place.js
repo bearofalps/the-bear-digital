@@ -1,8 +1,16 @@
 (() => {
   const KEY = document.documentElement.dataset.route || "bear-route";
-  const FR = document.documentElement.lang === "fr";
+  const LANG = (document.documentElement.lang || "en").slice(0, 2);
   const btn = document.getElementById("continue");
   const barResume = document.getElementById("resume");
+
+  const COPY = {
+    en: { prefix: "Continue · ", short: "Continue", fallback: "where you left" },
+    fr: { prefix: "Reprendre · ", short: "Reprendre", fallback: "là où vous vous êtes arrêté" },
+    de: { prefix: "Weiter · ", short: "Weiter", fallback: "dort, wo Sie aufgehoert haben" },
+    sl: { prefix: "Nadaljuj · ", short: "Nadaljuj", fallback: "tam, kjer ste ostali" }
+  };
+  const copy = COPY[LANG] || COPY.en;
 
   const read = () => {
     try { return JSON.parse(localStorage.getItem(KEY) || "null"); }
@@ -18,7 +26,7 @@
     const num = (ch.querySelector(".ch-num")?.innerText || "").replace(/\s+/g, " ").trim();
     const title = (ch.querySelector("h2")?.innerText || "").replace(/\s+/g, " ").trim();
     if (num && title) return `${num} — ${title}`;
-    return title || num || (FR ? "là où vous vous êtes arrêté" : "where you left");
+    return title || num || copy.fallback;
   };
 
   const nearestChapter = () => {
@@ -47,7 +55,7 @@
   const paintButtons = () => {
     const place = read();
     if (!place?.id) return;
-    const text = (FR ? "Reprendre · " : "Continue · ") + place.label;
+    const text = copy.prefix + place.label;
     if (btn) {
       btn.hidden = false;
       btn.textContent = text;
@@ -55,7 +63,7 @@
     }
     if (barResume) {
       barResume.hidden = false;
-      barResume.textContent = FR ? "Reprendre" : "Continue";
+      barResume.textContent = copy.short;
       barResume.href = "#" + place.id;
       barResume.title = place.label;
     }
