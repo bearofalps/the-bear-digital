@@ -40,9 +40,9 @@
     const t = title.toLowerCase();
     if (/prolog|prologue/.test(t)) return { id: "prologue", kind: "chapter", num: title.split("—")[0].trim() };
     if (/epilog|épilogue|epilogue/.test(t)) return { id: "epilogue", kind: "chapter", num: title.split("—")[0].trim() };
-    if (/teil i\b|part i\b|i\. del|première partie/.test(t)) return { id: "part-i", kind: "part" };
-    if (/teil ii\b|part ii\b|ii\. del|deuxième partie/.test(t)) return { id: "part-ii", kind: "part" };
     if (/teil iii\b|part iii\b|iii\. del|troisième partie/.test(t)) return { id: "part-iii", kind: "part" };
+    if (/teil ii\b|part ii\b|ii\. del|deuxième partie/.test(t)) return { id: "part-ii", kind: "part" };
+    if (/teil i\b|part i\b|i\. del|première partie/.test(t)) return { id: "part-i", kind: "part" };
     const ch = t.match(/(?:chapter|kapitel|chapitre|poglavje)\s+(\d+)/) || t.match(/^(\d+)\.\s*poglavje/);
     if (ch) return { id: "ch-" + ch[1], kind: "chapter", num: title.split("—")[0].trim() };
     return { id: title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 24), kind: "chapter", num: "" };
@@ -65,7 +65,7 @@
       if (!text) return "";
       return `<p${first ? ' class="first"' : ""}>${inline(text)}</p>`;
     };
-    while (i < lines.length && !/^#\s+(Prolog|Prologue|Teil|Part |I\. del|Première|Kapitel|Chapter|Chapitre|\d+\. poglavje|Epilog|Épilogue|Epilogue)/.test(lines[i])) i++;
+    while (i < lines.length && !/^#\s+(Prolog|Prologue|Teil|Part |I\. del|II\. del|III\. del|Première|Kapitel|Chapter|Chapitre|\d+\. poglavje|Epilog|Épilogue|Epilogue)/.test(lines[i])) i++;
     while (i < lines.length) {
       const line = lines[i];
       if (/^#\s+/.test(line)) {
