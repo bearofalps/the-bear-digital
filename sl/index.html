@@ -18,13 +18,15 @@
 </head>
 <body>
 <div class="progress" id="progress" hidden></div>
-<a class="skip" href="#book">Na besedilo</a>
 <header class="cover" id="cover">
-<img class="hero" src="../img/cover-wide.svg" alt="Nočni ranžirni stolp v dežju."/>
+<img class="hero" src="../img/cover-wide.svg" alt=""/>
 <div class="cover-copy">
 <p class="kicker">Izdaja za bralski pregled · 24. avgust 2026 · slovenščina</p>
-<nav class="lang-switch" aria-label="Jezik">
-<a href="/">EN</a><a href="/de/">DE</a><a href="/sl/" aria-current="page">SL</a><a href="/fr/">FR</a>
+<nav class="lang-switch" aria-label="Language">
+<a href="/">EN</a>
+<a href="/de/">DE</a>
+<a href="/sl/" aria-current="page">SL</a>
+<a href="/fr/">FR</a>
 </nav>
 <h1>The Bear</h1>
 <p class="subtitle">Kaj preživi ponovni zagon</p>
@@ -37,13 +39,13 @@
 </div>
 </div>
 </header>
-<nav class="bar" aria-label="Izdaja">
+<nav class="bar">
 <a class="mark" href="#cover">The Bear</a>
 <a href="#toc">Kazalo</a>
 <a href="#epilogue">Epilog</a>
 <a class="resume" id="resume" hidden href="#book">Nadaljuj</a>
 <div class="bar-end">
-<button type="button" class="theme" id="theme-toggle">Papir</button>
+<button type="button" class="theme" id="theme-toggle"></button>
 <button type="button" class="listen" id="listen-toggle" data-idle="Poslušaj" data-busy="Ustavi">Poslušaj</button>
 </div>
 </nav>
@@ -70,53 +72,13 @@
 <li><a href="#epilogue"><span>Kaj preživi ponovni zagon</span><span class="num">Epilog</span></a></li>
 </ol>
 </section>
-<div aria-live="polite" id="manuscript"></div>
+<div aria-live="polite" id="manuscript" data-src="book.md" data-img-prefix="../img/"></div>
 </main>
-<script>
-(() => {
-  const bar = document.getElementById('progress');
-  if (bar) {
-    bar.hidden = false;
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - innerHeight;
-      bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
-    };
-    addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-  }
-  const target = document.getElementById('manuscript');
-  const n = 17;
-  (async () => {
-    const bits = [];
-    let missing = 0;
-    for (let i = 0; i < n; i++) {
-      const path = 'parts/chunk-' + String(i).padStart(3,'0') + '.html';
-      try {
-        const r = await fetch(path);
-        if (r.ok) bits.push(await r.text());
-        else missing++;
-      } catch (e) { missing++; }
-    }
-    if (!bits.length) {
-      target.innerHTML = '<article class="chapter"><p>Besedilo še ni na poti.</p></article>';
-      return;
-    }
-    target.innerHTML = bits.join('');
-    if (missing) {
-      const note = document.createElement('p');
-      note.className = 'lede';
-      note.style.opacity = '.7';
-      note.textContent = 'Nekatera poglavja še prihajajo po zraku. Osveži stran čez minuto.';
-      target.appendChild(note);
-    }
-    document.dispatchEvent(new Event('bear-ready'));
-  })();
-})();
-</script>
+<script src="../js/book.js" defer></script>
 <script src="../js/theme.js" defer></script>
 <script src="../js/listen.js" defer></script>
 <script src="../js/stats.js" defer></script>
 <script src="../js/place.js" defer></script>
-<footer class="site"><span>The Bear · Marko Kolman</span><span>SL · 23. september 2026</span></footer>
+<footer class="site"><span>The Bear · Marko Kolman</span><span>SL · 24. september 2026</span></footer>
 </body>
 </html>
